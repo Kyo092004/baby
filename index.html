@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mica & Rei's Memories</title>
+    
+    <!-- Google Fonts (removed Poppins since we use Bookman Old Style) -->
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            font-family: 'Bookman Old Style', serif;
+            background: linear-gradient(135deg, rgba(128,0,128,0.9), rgba(255,105,180,0.9));
+            color: #fff;
+        }
+
+        /* Navbar */
+        nav.navbar {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .nav-link:hover {
+            color: #ffd1dc !important;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 10px;
+            min-height: 100vh;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-in-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Memories Section */
+        #memories {
+            text-align: center;
+        }
+        .music-player {
+            margin: 20px auto;
+        }
+        .music-controls {
+            margin-top: 10px;
+        }
+        .music-player audio {
+            width: 90%;
+            max-width: 400px;
+        }
+
+        /* Carousel */
+        .carousel-container {
+            margin-top: 30px;
+            width: 90%;
+            max-width: 900px;
+        }
+        .carousel-inner {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .carousel-img {
+            width: 100%;
+            height: 60vh;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+            .carousel-img {
+                height: 40vh;
+            }
+        }
+        .carousel-indicators button {
+            background-color: #ffd1dc;
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        /* Card Sections */
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            border-radius: 15px;
+            padding: 30px;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            font-family: 'Bookman Old Style', serif;
+        }
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffd1dc;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">I Love You Baby!</a>
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#memories"><i class="bi bi-image-fill"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#sorry"><i class="bi bi-envelope"></i> Sorry Letter</a></li>
+                <li class="nav-item"><a class="nav-link" href="#love"><i class="bi bi-heart-fill"></i> I Love You Letter</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Memories -->
+<section id="memories" class="container-section text-center">
+    <h2><i class="bi bi-images"></i> Our Memories</h2>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <audio id="musicPlayer" controls>
+            Your browser does not support the audio element.
+        </audio>
+        <div class="music-controls d-flex justify-content-center gap-2">
+            <button id="prevSong" class="btn btn-light btn-sm"><i class="bi bi-skip-backward-fill"></i> Prev</button>
+            <button id="togglePlay" class="btn btn-light btn-sm"><i class="bi bi-play-fill"></i> Play</button>
+            <button id="nextSong" class="btn btn-light btn-sm">Next <i class="bi bi-skip-forward-fill"></i></button>
+        </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel-container mx-auto">
+        <div id="memoriesCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="3"></button>
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="4"></button>
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="5"></button>
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="6"></button>
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="7"></button>
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="8"></button>
+                <button type="button" data-bs-target="#memoriesCarousel" data-bs-slide-to="9"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active"><img src="pic1.jpg" class="d-block carousel-img" alt="Memory 1"></div>
+                <div class="carousel-item"><img src="pic2.jpg" class="d-block carousel-img" alt="Memory 2"></div>
+                <div class="carousel-item"><img src="pic3.jpg" class="d-block carousel-img" alt="Memory 3"></div>
+                <div class="carousel-item"><img src="pic4.jpg" class="d-block carousel-img" alt="Memory 4"></div>
+                <div class="carousel-item"><img src="pic5.jpg" class="d-block carousel-img" alt="Memory 5"></div>
+                <div class="carousel-item"><img src="pic6.jpg" class="d-block carousel-img" alt="Memory 6"></div>
+                <div class="carousel-item"><img src="pic7.jpg" class="d-block carousel-img" alt="Memory 7"></div>
+                <div class="carousel-item"><img src="pic8.jpg" class="d-block carousel-img" alt="Memory 8"></div>
+                <div class="carousel-item"><img src="pic9.jpg" class="d-block carousel-img" alt="Memory 9"></div>
+                <div class="carousel-item"><img src="pic10.jpg" class="d-block carousel-img" alt="Memory 10"></div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#memoriesCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#memoriesCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Sorry Letter -->
+<section id="sorry" class="d-flex align-items-center justify-content-center">
+    <div class="card text-justify w-75">
+        <h2 class="text-center"><i class="bi bi-envelope icon"></i> Sorry Letter</h2>
+        <p>My Wifey,<br><br>I want to start by saying I’m truly sorry for the past few days. I know I’ve been the reason for our arguments and misunderstandings, and it hurts me to think that I caused you any pain. Baby, I never wanted those moments to happen, and I'm truly sorry for every time I messed up. I know my comprehension and the way I understood things weren’t always right, and I take full responsibility for that. Please know that I’m trying my best every day to understand you better, to listen more, and to make things right between us. You mean so much to me, and I don’t want misunderstandings to ever come between us again. I promise to give my best to be better, not just for me, but for us, for our love, and for you. You deserve the best version of me, and I will do everything I can to be that person. Thank you for your patience, for your love, and for being you. I love you more than words can express, and I’ll keep proving that to you every single day. 💜💗💜💗💜💗
+</p>
+    </div>
+</section>
+
+<!-- Love Letter -->
+<section id="love" class="d-flex align-items-center justify-content-center">
+    <div class="card text-justify w-75">
+        <h2 class="text-center"><i class="bi bi-heart-fill icon"></i> I Love You Letter</h2>
+        <p>My Baby,<br><br>Every single day, from the moment I wake up to the moment I close my eyes, I love you. Not just in words, but in every thought, every beat of my heart, and every little thing I do. Baby, you mean the world to me, and there’s nothing I wouldn’t do to make us happy together.
+            I promise to always do my best to put a smile on your beautiful face because your happiness is my happiness. When you smile, the world feels lighter, and everything makes sense. That’s how much you mean to me.
+            I know love isn’t always perfect, but I want you to know that I’m here to understand you, to listen, and to grow with you through everything. Whatever comes our way, I’ll face it with you, because this love, our love is worth everything.
+            Thank you for being my everything, thank you for being my comfortable person, my heart, my home. I love you more than words can ever say, and I’ll keep showing you that every single day of my life. 💜💗💜💗💜💗</p>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript for Music & Scroll Animation -->
+<script>
+    const songs = ["paramore.mp3", "jtwur.mp3", "aien.mp3"]; // Now 3 songs
+    let currentSong = 0;
+
+    const audioPlayer = document.getElementById("musicPlayer");
+    const togglePlay = document.getElementById("togglePlay");
+    const nextSongBtn = document.getElementById("nextSong");
+    const prevSongBtn = document.getElementById("prevSong");
+
+    function loadSong(index) {
+        audioPlayer.src = songs[index];
+        audioPlayer.load();
+        audioPlayer.play().catch(err => console.log("Autoplay blocked."));
+        togglePlay.innerHTML = '<i class="bi bi-pause-fill"></i> Pause';
+    }
+
+    audioPlayer.addEventListener("ended", () => {
+        nextSong();
+    });
+
+    togglePlay.addEventListener("click", () => {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            togglePlay.innerHTML = '<i class="bi bi-pause-fill"></i> Pause';
+        } else {
+            audioPlayer.pause();
+            togglePlay.innerHTML = '<i class="bi bi-play-fill"></i> Play';
+        }
+    });
+
+    nextSongBtn.addEventListener("click", nextSong);
+    prevSongBtn.addEventListener("click", prevSong);
+
+    function nextSong() {
+        currentSong = (currentSong + 1) % songs.length;
+        loadSong(currentSong);
+    }
+
+    function prevSong() {
+        currentSong = (currentSong - 1 + songs.length) % songs.length;
+        loadSong(currentSong);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        loadSong(currentSong);
+    });
+
+    // Fade-in on scroll
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+        sections.forEach(sec => {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) sec.classList.add("visible");
+        });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+</script>
+
+</body>
+</html>
